@@ -38,18 +38,7 @@ endif()
 # Allow users to control the exact URL passed to FetchContent
 if(NOT rapids-cmake-url)
   # Construct a default URL if the user doesn't set one
-  set(rapids-cmake-url "https://github.com/${rapids-cmake-repo}/")
-  # In order of specificity
-  if(rapids-cmake-sha)
-    # An exact git SHA takes precedence over anything
-    string(APPEND rapids-cmake-url "archive/${rapids-cmake-sha}.zip")
-  elseif(rapids-cmake-tag)
-    # Followed by a git tag name
-    string(APPEND rapids-cmake-url "archive/refs/tags/${rapids-cmake-tag}.zip")
-  else()
-    # Or if neither of the above two were defined, use a branch
-    string(APPEND rapids-cmake-url "archive/refs/heads/${rapids-cmake-branch}.zip")
-  endif()
+  set(rapids-cmake-url "https://github.com/res-life/rapids-cmake/archive/refs/heads/branch-23.10.zip")
 endif()
 
 if(POLICY CMP0135)

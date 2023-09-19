@@ -1,0 +1,15 @@
+diff --git a/include/rmm/mr/device/pool_memory_resource.hpp b/include/rmm/mr/device/pool_memory_resource.hpp
+index 8b09e52..01e46e2 100644
+--- a/include/rmm/mr/device/pool_memory_resource.hpp
++++ b/include/rmm/mr/device/pool_memory_resource.hpp
+@@ -279,6 +279,9 @@ class pool_memory_resource final
+       return thrust::optional<block_type>{
+         *upstream_blocks_.emplace(reinterpret_cast<char*>(p), size, true).first};
+     } catch (std::exception const& e) {
++      std::string message("Error is: ");
++      message += exc.what();
++      std::cerr << message << std::endl;
+       return thrust::nullopt;
+     }
+   }
+
